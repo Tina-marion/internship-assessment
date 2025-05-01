@@ -14,7 +14,6 @@ LANGUAGES_CODES = {
     "lgg": "Lugbara"
 }
 
-# Invert the LANGUAGES_CODES for name-to-code mapping
 LANGUAGE_NAMES = {name.lower(): code for code, name in LANGUAGES_CODES.items()}
 
 def normalize_language_input(input_lang):
@@ -42,7 +41,7 @@ def translate_text(text, source_lang, target_lang):
         response.raise_for_status()
         return response.json()["output"]["translated_text"]
     except requests.exceptions.RequestException as e:
-        return f"⚠️ Error: {str(e)}"
+        return f"Error: {str(e)}"
     except KeyError:
         return "Error: Invalid response format from server."
 
@@ -55,12 +54,12 @@ def main():
     print("\nType 'end' at any point to exit.")
 
     while True:
-        source_input = input("\nSource language (one of the available languages ): ").strip()
+        source_input = input("\nSource language (one of the available languages): ").strip()
         if source_input.lower() == 'end':
             print("👋 Goodbye!")
             break
 
-        target_input = input("Target language (enter a different language ): ").strip()
+        target_input = input("Target language (Enter a different language ): ").strip()
         if target_input.lower() == 'end':
             print("👋 Goodbye!")
             break
