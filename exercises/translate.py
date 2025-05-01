@@ -44,7 +44,7 @@ def translate_text(text, source_lang, target_lang):
     except requests.exceptions.RequestException as e:
         return f"⚠️ Error: {str(e)}"
     except KeyError:
-        return "⚠️ Error: Invalid response format from server."
+        return "Error: Invalid response format from server."
 
 def main():
     print("Sunbird AI Translator ")
